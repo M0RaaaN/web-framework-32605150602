@@ -67,3 +67,29 @@ export default {
   min-height: 2em;
 }
 </style>
+<style scoped>
+.event-lab {                             /* 外层：金色虚线圆角卡片 */
+  border: 1px dashed #b8860b;
+  padding: 12px 16px;
+  border-radius: 8px;
+  line-height: 2;
+}
+.bubble {                                /* 冒泡实验：绿色实线盒（下一任务用） */
+  border: 2px solid #42b883;
+  padding: 6px 10px;
+  margin: 6px 0;
+}
+.self-box {                              /* .self 实验：蓝色点线盒（下一任务用） */
+  border: 2px dotted #646cff;
+  padding: 6px 10px;
+  margin: 6px 0;
+}
+.logs {                                  /* 日志区：浅灰底 + 金色左边线 */
+  background: #fafafa;
+  border-left: 3px solid #b8860b;
+  margin: 8px 0 0;
+  padding: 4px 8px 4px 28px;
+  color: #555;
+  min-height: 2em;
+}
+</style>

@@ -31,6 +31,31 @@
 <button @click="form.school = '成都理工大学工程技术学院'">对象新增属性</button>
 <p v-if="form.school">{{ form.school }}</p>
   </div>
+  <div class="bubble" @click="log('outer 触发（外层 @click）')">
+  <button @click.stop="log('inner 触发（.stop：冒泡被阻止）')">内层 .stop</button>
+  <button @click="log('inner 触发（无 .stop：冒泡到外层）')">内层 无.stop</button>
+</div>
+<!-- .prevent：替代任务 1 里手写的 e.preventDefault() -->
+<a href="https://vuejs.org" @click.prevent="log('.prevent 阻止了跳转')">Vue 官网（.prevent 版）</a>
+
+<!-- .once：只触发一次的"抽奖" -->
+<button @click.once="log('`.once` 抽奖按钮：只触发这一次！')">抽奖按钮 .once</button>
+
+<!-- .self：只有点击盒子本身才触发，点子元素不算 -->
+<div class="self-box" @click.self="log('.self：点到盒子本身才触发')">
+  点盒子本身（.self）<button>我是子元素（点我没用）</button>
+  <input
+  @keyup.enter="log('回车 .enter 触发')"
+  @keyup.esc="log('Esc .esc 触发')"
+  placeholder="这里按 Enter / Esc 试试"
+/>
+<input
+  v-model="newNote"
+  placeholder="输入笔记内容"
+  @keyup.enter="addNote"
+  @keyup.esc="newNote = ''"
+/>
+</div>
 </template>
 
 <script>
